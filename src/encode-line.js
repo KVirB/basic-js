@@ -13,19 +13,17 @@ const { NotImplementedError } = require("../extensions/index.js");
 function encodeLine(str) {
   let result = "";
   let mas = str.split("");
-  let prev = mas[0];
-  count = 0;
+  let count = 1;
   for (let i = 0; i < mas.length; i++) {
-    if (prev === mas[i]) {
+    if (mas[i] === mas[i + 1]) {
       count += 1;
-      str = count + prev;
     } else {
-      count = 0;
+      result += count === 1 ? mas[i] : count + mas[i];
+      count = 1;
     }
-    prev = mas[i];
-    result = str;
   }
   console.log(result);
+  return result;
 }
 
 module.exports = {
